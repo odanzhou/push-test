@@ -1,4 +1,4 @@
-import { Outlet, Link } from '@modern-js/runtime/router'
+import { Outlet, Link } from '@modern-js/runtime/router';
 
 export default () => {
   return (
@@ -16,5 +16,5 @@ export default () => {
       </div>
       <Outlet />
     </div>
-  )
-}
+  );
+};

@@ -6,7 +6,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: ['../tsconfig.json'],
   },
-  rules: {
-    semi: 'off',
-  },
-}
+  // rules: {
+  //   semi: 'off',
+  // },
+};

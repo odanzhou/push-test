@@ -3,7 +3,7 @@ const ScoketPush = () => {
     <div>
       <h2>scoket 推送</h2>
     </div>
-  )
-}
+  );
+};
 
-export default ScoketPush
+export default ScoketPush;
