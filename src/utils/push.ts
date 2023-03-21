@@ -14,3 +14,8 @@ export const socketPush = () => get('/api/scoket');
  * EventSource 推送
  */
 export const eventSourcePush = () => get('/api/scoket');
+
+/**
+ * 轮训 推送
+ */
+export const pollPush = () => get('/api/poll');
