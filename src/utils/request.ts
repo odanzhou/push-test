@@ -3,7 +3,7 @@ import axios from 'axios';
 type FetchInit = Parameters<typeof fetch>[1];
 type FetchInput = Parameters<typeof fetch>[0];
 
-const API = 'http://localhost:4000'; // 'http://localhost:4000/api'; // 'localhost:4000/api';
+const API = 'https://localhost:4000'; // 'http://localhost:4000'; // 'http://localhost:4000/api'; // 'localhost:4000/api';
 
 const request = async <T = any>(
   input: FetchInput,
