@@ -15,7 +15,7 @@ export default defineConfig<'rspack'>({
     }),
   ],
   dev: {
-    https: true,
+    // https: true,
     // https: {
     //   key: fs.readFileSync(`${rootDir}/localhost-privkey.pem`),
     //   cert: fs.readFileSync(`${rootDir}/localhost-cert.pem`),
