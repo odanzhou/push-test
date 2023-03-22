@@ -28,6 +28,6 @@ pnpm serve        # 按生产环境的要求，运行项目
 
 ### http2
 [使用koa创建基于http2的服务](https://juejin.cn/post/7039525929558736927)
-
+[koa-server-push](https://www.npmjs.com/package/koa-server-push)
 ### socket.io
 [socket.io](https://github.com/socketio/socket.io)
