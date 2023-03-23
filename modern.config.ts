@@ -24,10 +24,15 @@ export default defineConfig<'rspack'>({
   tools: {
     devServer: {
       proxy: {
-        '/api': {
-          target: 'http://localhost:4000/api',
-          changeOrigin: true,
-        },
+        // '/api': {
+        //   target: 'https://localhost:4000/api',
+        //   changeOrigin: true,
+        // },
+        // '/socket.io': {
+        //   target: 'ws://localhost:4000',
+        //   changeOrigin: true,
+        //   ws: true,
+        // },
       },
     },
   },
