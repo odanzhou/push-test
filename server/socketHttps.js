@@ -6,7 +6,6 @@ const cors = require('@koa/cors');
 const { Server } = require('socket.io');
 const socketConnect = require('./socket');
 
-
 const app = new Koa();
 app.use(cors());
 const server = https.createServer(
@@ -16,8 +15,8 @@ const server = https.createServer(
   },
   app.callback(),
 );
-socketConnect(server, 6000)
-return
+// socketConnect(server, 6000)
+
 const io = new Server(server, {
   allowEIO3: true,
   cors: {

@@ -22,20 +22,24 @@ const sse = (stream, event, data) => {
   return stream.push(`event:${event}\ndata:${JSON.stringify(data)}\n\n`);
 };
 
+app.use(cors());
+
 router.get('/push', ctx => {
   const stream = new RR();
   ctx.set({
-    'Content-Type': 'text/event-stram',
+    'Content-Type': 'text/event-stream',
     'Cache-Control': 'no-cache',
     Connection: 'keep-alive',
   });
-  sse(stream, 'test', { a: 'yango', b: 'tango' });
+  sse(stream, 'message', { a: 'yango', b: 'tango' });
   ctx.body = stream;
   setInterval(() => {
-    sse(stream, 'test', { a: 'yango', b: Date.now() });
+    sse(stream, 'message', { a: 'yango', b: Date.now() });
   }, 3000);
+  setInterval(() => {
+    stream.push(':ping');
+  }, 5000);
 });
-app.use(cors());
 app.use(router.routes());
 app.listen(port, () => {
   console.log(`eventSource app run at : https://127.0.0.1:${port}`);
