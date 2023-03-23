@@ -8,6 +8,7 @@ const cors = require('@koa/cors');
 const pushRouter = require('./router');
 const socketConnect = require('./socket');
 // require('./socket2'); // 8081 端口socket
+require('./sockehttps'); // 9000 端口socket
 
 const app = new Koa();
 

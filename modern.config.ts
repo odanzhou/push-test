@@ -16,10 +16,10 @@ export default defineConfig<'rspack'>({
     }),
   ],
   dev: {
-    https: {
-      key: fs.readFileSync('localhost-privkey.pem', 'utf8'),
-      cert: fs.readFileSync('localhost-cert.pem', 'utf8'),
-    },
+    // https: {
+    //   key: fs.readFileSync('localhost-privkey.pem', 'utf8'),
+    //   cert: fs.readFileSync('localhost-cert.pem', 'utf8'),
+    // },
     // https: true,
     // https: {
     //   key: fs.readFileSync(`${rootDir}/localhost-privkey.pem`),
