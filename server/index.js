@@ -7,7 +7,7 @@ const Router = require('koa-router');
 const cors = require('@koa/cors');
 const pushRouter = require('./router');
 const socketConnect = require('./socket');
-require('./socket2');
+// require('./socket2'); // 8081 端口socket
 
 const app = new Koa();
 
@@ -16,7 +16,7 @@ router.use('/api', pushRouter.routes(), pushRouter.allowedMethods());
 app.use(cors());
 app.use(router.routes()).use(router.allowedMethods());
 
-const PORT = 4000;
+let PORT = 4000;
 
 const server = http2.createSecureServer(
   {
@@ -32,4 +32,13 @@ socketConnect(server);
 // 启动监听
 server.listen(PORT, () => {
   console.log(`koa2 started in ${PORT}`);
+});
+
+server.on('error', e => {
+  if (e.code === 'EADDRINUSE') {
+    console.log(`端口:${e.port} 被占用`);
+    PORT++;
+  } else {
+    console.log('错误：', e);
+  }
 });

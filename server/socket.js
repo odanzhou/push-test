@@ -9,14 +9,28 @@ const socketConnect = server => {
         origin: '*',
         methods: ['GET', 'POST'],
       },
+      // transports: ['websocket'],
     });
   }
-  io.on('connetction', socket => {
-    console.log('a user connected', socket);
-    socket.on('chat_message', msg => {
-      console.log('message: ', msg);
-      io.emit('chat_message', msg + 1);
+  const hash = { value: 0 };
+  io.on('connection', socket => {
+    console.log('wss socket初始化完成');
+    socket.on('chat_message', data => {
+      const a = io;
+      console.log(data, '接收到的信息');
+      // socket.emit('message', { hello: '你是谁' });
     });
+    socket.on('error', err => {
+      debugger;
+      if (err && err.message === 'unauthorized event') {
+        socket.disconnect();
+      }
+    });
+    setInterval(() => {
+      const { value } = hash;
+      hash.value += 1;
+      socket.emit('chat_message', { value });
+    }, 5000);
   });
 };
 
