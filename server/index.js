@@ -9,8 +9,9 @@ const pushRouter = require('./router');
 const socketConnect = require('./socket');
 // require('./socket2'); // 8081 端口socket
 // require('./socketHttps'); // 9000 端口socket
-require('./socketHttp2'); // 6000 端口socket
-return
+// require('./socketHttp2'); // 6000 端口socket
+require('./eventSource');
+
 const app = new Koa();
 
 const router = new Router();
