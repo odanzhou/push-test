@@ -11,7 +11,13 @@ const socket = io(API, {
   },
 });
 
-export const sendMessage = (message = 1, callback) => {
-  socket.emit('chat_message', message);
-  socket.on('chat_message', callback);
+export const chatMessage = () => {
+  return {
+    emit: message => socket.emit('chat_message', message),
+    on: callback => socket.on('chat_message', callback),
+    close: () => {
+      debugger;
+      socket.close();
+    },
+  };
 };

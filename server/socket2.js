@@ -19,10 +19,18 @@ server.listen(process.env.PORT || port, () => {
   console.log(`app run at : http://127.0.0.1:${port}`);
 });
 
-io.on('connection', socket => {
+const hash = { value: 0 };
+io.on('connection', (socket, ...args) => {
+  const a = [socket, args];
   console.log('socket初始化完成');
-  socket.on('say', data => {
+  socket.on('chat_message', data => {
+    const a = io;
     console.log(data, '接收到的信息');
-    socket.emit('message', { hello: '你是谁' });
+    // socket.emit('message', { hello: '你是谁' });
   });
+  setInterval(() => {
+    const { value } = hash;
+    hash.value += 1;
+    socket.emit('chat_message', { value });
+  }, 5000);
 });

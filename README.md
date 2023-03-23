@@ -31,3 +31,4 @@ pnpm serve        # 按生产环境的要求，运行项目
 [koa-server-push](https://www.npmjs.com/package/koa-server-push)
 ### socket.io
 [socket.io](https://github.com/socketio/socket.io)
+[https://qa.1r1g.com/sf/ask/719296721/](https://qa.1r1g.com/sf/ask/719296721/)
