@@ -4,6 +4,8 @@ const path = require('path');
 const Koa = require('koa');
 const cors = require('@koa/cors');
 const { Server } = require('socket.io');
+const socketConnect = require('./socket');
+
 
 const app = new Koa();
 app.use(cors());
@@ -14,6 +16,8 @@ const server = https.createServer(
   },
   app.callback(),
 );
+socketConnect(server, 6000)
+return
 const io = new Server(server, {
   allowEIO3: true,
   cors: {
@@ -31,7 +35,7 @@ server.listen(process.env.PORT || port, () => {
 const hash = { value: 0 };
 io.on('connection', (socket, ...args) => {
   const a = [socket, args];
-  console.log('socket初始化完成');
+  console.log('socket初始化完成', port);
   socket.on('chat_message', data => {
     const a = io;
     console.log(data, '接收到的信息');

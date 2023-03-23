@@ -1,7 +1,7 @@
 const { Server } = require('socket.io');
 
 let io;
-const socketConnect = server => {
+const socketConnect = (server, { port, autoListen = true } = {}) => {
   if (!io) {
     io = new Server(server, {
       allowEIO3: true,
@@ -14,7 +14,7 @@ const socketConnect = server => {
   }
   const hash = { value: 0 };
   io.on('connection', socket => {
-    console.log('wss socket初始化完成');
+    console.log('wss socket初始化完成', port);
     socket.on('chat_message', data => {
       const a = io;
       console.log(data, '接收到的信息');
@@ -32,6 +32,11 @@ const socketConnect = server => {
       socket.emit('chat_message', { value });
     }, 5000);
   });
+  if (autoListen && port) {
+    server.listen(port, () => {
+      console.log(`app run at : https://127.0.0.1:${port}`);
+    });
+  }
 };
 
 module.exports = socketConnect;

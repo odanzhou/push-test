@@ -36,3 +36,8 @@ pnpm serve        # 按生产环境的要求，运行项目
 #### 问题
 在 http2 的模式下，使用 transports: ['websocket']，服务器端会报错，关闭后，推送无效，但自动启用了轮训
 同时在客户端和服务端启用这个参数依旧报错
+解决：
+[http/2 Support](https://github.com/socketio/socket.io/issues/3576)
+[With an HTTP/2 server](https://socket.io/docs/v4/server-initialization/#with-an-http2-server)
+
+htt2Socket 也可以，原来是 6000 端口没法使用的原因造成的，具体为啥 6000 不行，原因待查
